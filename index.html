@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Rock Paper Scissors Part 2</title>
+  </head>
+  <body>
+    
+    <div id="game">
+    <h1><strong>The Psychic Game</strong></h1>
+    <h2>Guess what letter I'm thinking of</h2>
+    <h2>Wins:<span id="wins"></spans></h2>
+    <h2>Losses:<span id="losses"></span></h2>
+    <h2>Guesses Left:<span id="guessesleft"></span></h2>
+    <h2>Your Guesses so far:<span id="guessessofar"></span></h2>
+
+    </div>
+
+    <script type="text/javascript">
+
+      // Creates an array that lists out all of the options.
+      var options = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
+        'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
+        't', 'u', 'v', 'w', 'x', 'y', 'z'];
+
+      var wins = 0;
+      var losses = 0;
+      var guessesleft = 10;
+      var guessessofar = "";
+
+      // This function is run whenever the user presses a key.
+      document.onkeyup = function(event) {
+        var wintext = document.getElementById("wins");
+        var losetext = document.getElementById("losses");
+        var guesseslefttext = document.getElementById("guessesleft");
+        var guessessofartext = document.getElementById("guessessofar");
+        
+
+        // Determines which key was pressed
+        var userGuess = event.key;
+
+        // Alerts the key the user pressed (userGuess).
+        alert("The user guesses: " + userGuess);
+
+        // Randomly chooses a choice from the options array. This is the Computer's guess.
+        var computerGuess = options[Math.floor(Math.random() * options.length)];
+
+        // Alerts the Computer's guess.
+        alert("The computer guesses: " + computerGuess);
+        
+        if (userGuess == computerGuess) {
+          alert("You Win!");
+          wins++;
+          guessesleft--;
+
+        } else if (userGuess !== computerGuess) {
+          alert("You Lose!");
+          losses++;
+          guessesleft--;
+        
+        }
+
+        wintext.textContent = wins;
+        losetext.textContent = losses;
+        guesseslefttext.textContent = guessesleft;
+        
+        
+        for (var i = 0; i < 10; i++) {
+        guessessofartext.textContent = userGuess;
+
+      }
+
+      };
+
+    </script>
+
+  </body>
+</html>
