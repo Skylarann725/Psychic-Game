@@ -2,7 +2,7 @@
 <html lang="en-us">
   <head>
     <meta charset="UTF-8">
-    <title>Rock Paper Scissors Part 2</title>
+    <title>The Psychic Game</title>
   </head>
   <body>
     
@@ -26,7 +26,7 @@
       var wins = 0;
       var losses = 0;
       var guessesleft = 10;
-      var guessessofar = "";
+      var guessessofar = " ";
 
       // This function is run whenever the user presses a key.
       document.onkeyup = function(event) {
@@ -43,32 +43,43 @@
         alert("The user guesses: " + userGuess);
 
         // Randomly chooses a choice from the options array. This is the Computer's guess.
+
         var computerGuess = options[Math.floor(Math.random() * options.length)];
 
         // Alerts the Computer's guess.
         alert("The computer guesses: " + computerGuess);
         
-        if (userGuess == computerGuess) {
-          alert("You Win!");
-          wins++;
+        if (userGuess !== computerGuess) {
           guessesleft--;
+          guesseslefttext.innerHTML = userGuess;
+        } 
+      
 
-        } else if (userGuess !== computerGuess) {
-          alert("You Lose!");
-          losses++;
-          guessesleft--;
-        
+        if (guessesleft < 1) {
+          losses++
+          reset ()
         }
 
-        wintext.textContent = wins;
-        losetext.textContent = losses;
-        guesseslefttext.textContent = guessesleft;
-        
-        
-        for (var i = 0; i < 10; i++) {
-        guessessofartext.textContent = userGuess;
+        if (userGuess === computerGuess) {
+          wins++
+          reset ()
+        }
 
-      }
+        reset = function() {
+          guessesleft = 10;
+          guessessofar = " ";
+        }
+
+
+        
+
+        wintext.innerHTML = wins;
+        losetext.innerHTML = losses;
+        guesseslefttext.innerHTML = guessesleft;
+        
+
+        guessessofartext.innerHTML = userGuess
+      
 
       };
 
