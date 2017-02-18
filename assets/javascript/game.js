@@ -20,18 +20,20 @@
         var userGuess = event.key;
 
         // Alerts the key the user pressed (userGuess).
-        alert("The user guesses: " + userGuess);
+        // alert("The user guesses: " + userGuess);
 
         // Randomly chooses a choice from the options array. This is the Computer's guess.
 
         var computerGuess = options[Math.floor(Math.random() * options.length)];
 
         // Alerts the Computer's guess.
-        alert("The computer guesses: " + computerGuess);
+        // alert("The computer guesses: " + computerGuess);
         
         if (userGuess !== computerGuess) {
           guessesleft--;
-          guesseslefttext.innerHTML = .push(userGuess);
+          guessessofar += " " + userGuess;
+          guessessofartext.innerHTML =  guessessofar;
+            
         } 
       
 
@@ -57,8 +59,7 @@
         losetext.innerHTML = losses;
         guesseslefttext.innerHTML = guessesleft;
         
-
-        guessessofartext.innerHTML = userGuess
+          }
       
 
-      };
+      
