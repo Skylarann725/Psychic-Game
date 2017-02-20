@@ -19,16 +19,11 @@
         // Determines which key was pressed
         var userGuess = event.key;
 
-        // Alerts the key the user pressed (userGuess).
-        // alert("The user guesses: " + userGuess);
-
         // Randomly chooses a choice from the options array. This is the Computer's guess.
 
         var computerGuess = options[Math.floor(Math.random() * options.length)];
-
-        // Alerts the Computer's guess.
-        // alert("The computer guesses: " + computerGuess);
         
+        //if userguess does not equal computer guess then lose guesses
         if (userGuess !== computerGuess) {
           guessesleft--;
           guessessofar += " " + userGuess;
@@ -36,17 +31,19 @@
             
         } 
       
-
+        //if gueeses left is below 1 then losses go up
         if (guessesleft < 1) {
           losses++
           reset ()
         }
 
+        //if userguess equals computer guess then wins go up
         if (userGuess === computerGuess) {
           wins++
           reset ()
         }
 
+        //reset game after win or guesses left equals less than 1
         reset = function() {
           guessesleft = 10;
           guessessofar = " ";
